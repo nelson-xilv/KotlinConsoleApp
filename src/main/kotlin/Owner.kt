@@ -1,6 +1,8 @@
-class Owner(
-    private val firstName: String,
-    private val lastName: String
+data class Owner(
+    val firstName: String?,
+    val lastName: String?
 ) {
-
+    override fun toString(): String {
+        return "$firstName $lastName"
+    }
 }

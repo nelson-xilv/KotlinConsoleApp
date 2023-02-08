@@ -1,12 +1,24 @@
-private const val START_GREETING = "Добро пожаловать в приложение для парковки своего автомобиля!\n"
+private const val START_GREETING = "\nДобро пожаловать в приложение для парковки своего автомобиля!"
 private const val HELP_INFO = """Доступные команды:
 1. /start - запуск приложения
-2. /end - выход из приложения
-"""
-private const val END_APP = "Удачного вам дня!"
+2. /help - вывод доступных команд
+3. /park - паркует автомобиль на любое свободное место
+4. /return - возврат автомобиля
+5. /park_info_by_car - по номеру показывает в каком месте припаркована машина
+6. /park_info_by_place - по месту на парковке выводит информацию о машине
+7. /end - выход из приложения"""
+private const val PARKING_CAR = "\nВведите данные машины и владельца для парковки автомобиля:"
+private const val RETURN_CAR = "\nВведите своё имя, чтобы вернуть свою машину:"
+private const val INFO_BY_CAR = "\nВведите номер автомобиля:"
+private const val INFO_BY_PLACE = "\nВведите номер парковки:"
+private const val END_APP = "\nУдачного вам дня!"
 
-enum class Command(val commandName: String, val outputResult: String) {
+enum class Command(val command: String, val output: String) {
     START("/start", START_GREETING),
     HELP("/help", HELP_INFO),
-    END("/end", END_APP)
+    PARK("/park", PARKING_CAR),
+    RETURN("/return", RETURN_CAR),
+    PARK_INFO_BY_CAR("/park_info_by_car", INFO_BY_CAR),
+    PARK_INFO_BY_PLACE("/park_info_by_place", INFO_BY_PLACE),
+    END("/end", END_APP),
 }
