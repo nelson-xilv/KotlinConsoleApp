@@ -42,7 +42,7 @@ fun main() {
                 programWorking = false
             }
 
-            else -> println("$UNKNOWN_COMMAND $inputCommand. $INPUT_HELP\n")
+            else -> println("$UNKNOWN_COMMAND $inputCommand. $INPUT_HELP")
         }
     }
 }

@@ -50,14 +50,4 @@ object Parking {
         }
         println("Парковка пуста")
     }
-
-//    fun showParking() {
-//        parking.onEach { (key, value) ->
-//            if (value == null) {
-//                println("$key = Свободно")
-//            } else {
-//                println("$key = $value")
-//            }
-//        }
-//    }
 }
