@@ -9,7 +9,7 @@ class ParkingManager {
         if (carAndOwnerData.size == 5) {
             val owner = Owner(carAndOwnerData[3], carAndOwnerData[4])
             val car = Car(carAndOwnerData[0], carAndOwnerData[1], carAndOwnerData[2], owner)
-            parking.parkingCar(car)
+            parking.addCar(car)
         } else {
             println(INCORRECT_DATA_INPUT)
         }
@@ -31,5 +31,13 @@ class ParkingManager {
     fun getInfoByPlace() {
         val numberPlace = readln()
         parking.getNumberCar(numberPlace)
+    }
+
+    fun showParkStats() {
+        parking.showParking()
+    }
+
+    fun showParkAllStats() {
+        println("${parking.getParkingStats()}")
     }
 }

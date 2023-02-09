@@ -1,6 +1,7 @@
 object Parking {
 
     private val parking = mutableMapOf<String, Car?>()
+    private var parkingStats = 0
 
     init {
         for (i in 1..20) {
@@ -8,12 +9,12 @@ object Parking {
         }
     }
 
-    fun parkingCar(car: Car) {
-
+    fun addCar(car: Car) {
         for ((key, value) in parking) {
             if (value == null) {
                 parking[key] = car
-                println("Автомобиль $car припаркован в $key")
+                println("\nАвтомобиль $car припаркован в $key")
+                parkingStats++
                 break
             }
         }
@@ -22,32 +23,46 @@ object Parking {
     fun ownerVerification(owner: Owner) {
         for (parkingPlace in parking) {
             if (parkingPlace.value?.owner == owner) {
-                println("$owner забрал свой автомобиль ${parkingPlace.value}")
+                println("\n$owner забрал свой автомобиль ${parkingPlace.value}")
                 parkingPlace.setValue(null)
                 return
             }
         }
-        println("$owner не парковал свой автомобиль")
+        println("\n$owner не парковал свой автомобиль")
     }
 
     fun getNumberPlace(numberCar: String) {
         for (parkingPlace in parking) {
             if (numberCar == parkingPlace.value?.number.toString()) {
-                println("Машина ${parkingPlace.value} припаркована в месте ${parkingPlace.key}")
+                println("\nМашина ${parkingPlace.value} припаркована в месте ${parkingPlace.key}")
                 return
             }
         }
-        println("Такой машины на праковке нет")
+        println("\nТакой машины на праковке нет")
     }
 
     fun getNumberCar(numberPlace: String) {
         val correctNumberPlace = "P$numberPlace"
-        for(parkingPlace in parking) {
+        for (parkingPlace in parking) {
             if (correctNumberPlace == parkingPlace.key) {
-                println("Припаркованная на месте $numberPlace машина: ${parkingPlace.value}")
+                println("\nПрипаркованная на месте $numberPlace машина: ${parkingPlace.value}")
                 return
             }
         }
-        println("Парковка пуста")
+        println("\nПарковка пуста")
+    }
+
+    fun showParking() {
+        parking.onEach { (key, value) ->
+            if (value == null) {
+                println("$key = Свободно")
+            } else {
+                println("$key = $value")
+            }
+        }
+    }
+
+    fun getParkingStats(): Int {
+        return parkingStats
     }
 }
