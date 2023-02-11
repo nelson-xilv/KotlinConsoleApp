@@ -37,6 +37,16 @@ fun main() {
                 parkingManager.getInfoByPlace()
             }
 
+            Command.PARK_STATS.command -> {
+                println(Command.PARK_STATS.output)
+                parkingManager.showParkStats()
+            }
+
+            Command.PARK_ALL_STATS.command -> {
+                print(Command.PARK_ALL_STATS.output)
+                parkingManager.showParkAllStats()
+            }
+
             Command.END.command -> {
                 println(Command.END.output)
                 programWorking = false
